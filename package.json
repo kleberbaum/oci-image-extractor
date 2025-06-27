@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "libarchive-wasm": "^0.2.0",
+    "libarchive-wasm": "^1.2.0",
     "jszip": "^3.10.0",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",

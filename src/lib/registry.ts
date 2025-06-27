@@ -28,10 +28,10 @@ function parseImageRef(ref: string) {
 
   let tag: string | undefined;
   if (remainder.includes('@')) {
-    [remainder] = remainder.split('@');
+    throw new Error(`Digests are not supported in image references: '${ref}'`);
   }
   if (remainder.includes(':')) {
-    [remainder, tag] = remainder.split(':');
+    [remainder, tag] = remainder.split(':', 2);
   }
 
   const parts = remainder.split('/');
