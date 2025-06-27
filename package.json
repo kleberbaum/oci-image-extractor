@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "astro": "^4.0.0",
-    "@astrojs/cloudflare": "^3.0.0",
+    "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/react": "^3.0.0",
     "typescript": "^5.0.0"
   }
