@@ -18,7 +18,7 @@ export async function fetchManifest(imageRef: string) {
 
 export async function* fetchLayer(base: string, digest: string) {
   const res = await fetch(`${base}/blobs/${digest}`);
-  if (!res.ok) throw new Error(`layer fetch failed ${res.status}`);
+  if (!res.ok) throw new Error(`layer fetch failed for digest ${digest} with status ${res.status}`);
   const ds = new DecompressionStream('gzip');
   const stream = res.body!.pipeThrough(ds);
   const reader = stream.getReader();
