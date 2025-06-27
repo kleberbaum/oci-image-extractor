@@ -42,4 +42,5 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ vars.CF_ACCOUNT_ID }}
           projectName: ${{ vars.CF_PAGES_PROJECT }}
+
           directory: dist

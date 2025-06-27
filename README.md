@@ -8,7 +8,8 @@
 
 This repository hosts a static **Astro** site that lets you inspect and
 download public Docker or OCI images directly in the browser. The UI uses
-**Chakra UI**, and the site is deployed to **Cloudflare Pages**.
+
+**Chakra UI** and the site is deployed to **Cloudflare Pages**.
 
 ## Local development
 
@@ -23,7 +24,6 @@ pnpm dev
 To create a production build locally, run:
 
 ```bash
-pnpm install
 pnpm build
 ```
 

@@ -32,6 +32,7 @@ node_modules/
 dist/
 .astro/
 .vercel/
+pnpm-lock.yaml
 .DS_Store
 
 # SPDX-License-Identifier: (EUPL-1.2)
