@@ -23,10 +23,7 @@ pnpm dev
 To create a production build locally run:
 
 ```bash
-pnpm install
 pnpm build
-```
-
 Visit `http://localhost:4321` and enter an image such as
 `ghcr.io/getcronit/jaen-agent:zitadel`. After fetching, a table lists every file
 with the option to download a ZIP archive of the extracted filesystem.
@@ -36,9 +33,8 @@ with the option to download a ZIP archive of the extracted filesystem.
 A GitHub Actions workflow builds the site and uploads the `dist/` folder to
 Cloudflare Pages. The workflow uses these repository secrets:
 
-- `CF_API_TOKEN`
-- `CF_ACCOUNT_ID`
-- `CF_PAGES_PROJECT`
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
 
 The site deploys to `oci-image-extractor.pages.dev` using the project name
 `oci-image-extractor`. See `.github/workflows/pages.yml` for the full
