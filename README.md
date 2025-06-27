@@ -23,10 +23,7 @@ pnpm dev
 To create a production build locally run:
 
 ```bash
-pnpm install
 pnpm build
-```
-
 Visit `http://localhost:4321` and enter an image such as
 `ghcr.io/getcronit/jaen-agent:zitadel`. After fetching, a table lists every file
 with the option to download a ZIP archive of the extracted filesystem.
