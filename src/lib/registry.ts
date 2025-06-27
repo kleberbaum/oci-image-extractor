@@ -9,7 +9,9 @@ export async function fetchManifest(imageRef: string) {
       Accept: 'application/vnd.docker.distribution.manifest.v2+json',
     },
   });
-  if (!mRes.ok) throw new Error(`manifest fetch failed ${mRes.status}`);
+
+  if (!mRes.ok) throw new Error(`manifest fetch failed for image '${imageRef}' at URL '${base}/manifests/${tag}' with status ${mRes.status}`);
+
   const manifest = (await mRes.json()) as {
     layers: { mediaType: string; digest: string; size: number }[];
   };
@@ -18,7 +20,9 @@ export async function fetchManifest(imageRef: string) {
 
 export async function* fetchLayer(base: string, digest: string) {
   const res = await fetch(`${base}/blobs/${digest}`);
-  if (!res.ok) throw new Error(`layer fetch failed ${res.status}`);
+
+  if (!res.ok) throw new Error(`layer fetch failed for digest ${digest} with status ${res.status}`);
+
   const ds = new DecompressionStream('gzip');
   const stream = res.body!.pipeThrough(ds);
   const reader = stream.getReader();
