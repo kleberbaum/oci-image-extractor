@@ -23,17 +23,22 @@ export default function Explorer() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const ref = new FormData(e.currentTarget as HTMLFormElement)
-      .get('image')!
-      .toString()
-      .trim();
-    const { base, layers } = await fetchManifest(ref);
-    const streams = layers.map((l) => fetchLayer(base, l.digest));
-    const vfs = await extractLayers(streams);
-    setRows([...vfs.keys()].map((k) => ({ path: k, size: vfs.get(k)!.data.length })));
+    try {
+      const ref = new FormData(e.currentTarget as HTMLFormElement)
+        .get('image')!
+        .toString()
+        .trim();
+      const { base, layers } = await fetchManifest(ref);
+      const streams = layers.map((l) => fetchLayer(base, l.digest));
+      const vfs = await extractLayers(streams);
+      setRows([...vfs.keys()].map((k) => ({ path: k, size: vfs.get(k)!.data.length })));
 
-    const zipBlob = await vfsToZip(vfs);
-    setZipURL(URL.createObjectURL(zipBlob));
+      const zipBlob = await vfsToZip(vfs);
+      setZipURL(URL.createObjectURL(zipBlob));
+    } catch (error) {
+      console.error('An error occurred:', error);
+      alert('Failed to fetch and process the image. Please try again.');
+    }
   }
 
   return (
