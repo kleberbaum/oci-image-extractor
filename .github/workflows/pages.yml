@@ -40,7 +40,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          accountId: ${{ vars.CF_ACCOUNT_ID }}
           projectName: ${{ vars.CF_PAGES_PROJECT }}
 
           directory: dist
