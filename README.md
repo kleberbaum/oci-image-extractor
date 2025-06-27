@@ -31,11 +31,11 @@ with the option to download a ZIP archive of the extracted filesystem.
 ## Continuous deployment
 
 A GitHub Actions workflow builds the site and uploads the `dist/` folder to
-Cloudflare Pages. The workflow uses these repository secrets:
+Cloudflare Pages. It expects these configuration values:
 
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
-
+- `CF_API_TOKEN` — repository secret
+- `CF_ACCOUNT_ID` — repository variable
+- `CF_PAGES_PROJECT` — repository variable
 The site deploys to `oci-image-extractor.pages.dev` using the project name
 `oci-image-extractor`. See `.github/workflows/pages.yml` for the full
 pipeline.
