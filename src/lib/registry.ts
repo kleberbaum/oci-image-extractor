@@ -9,7 +9,7 @@ export async function fetchManifest(imageRef: string) {
       Accept: 'application/vnd.docker.distribution.manifest.v2+json',
     },
   });
-  if (!mRes.ok) throw new Error(`manifest fetch failed ${mRes.status}`);
+  if (!mRes.ok) throw new Error(`manifest fetch failed for image '${imageRef}' with tag '${tag}' (${mRes.status})`);
   const manifest = (await mRes.json()) as {
     layers: { mediaType: string; digest: string; size: number }[];
   };
