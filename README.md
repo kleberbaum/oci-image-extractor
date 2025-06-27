@@ -8,6 +8,7 @@
 
 This repository hosts a static **Astro** site that lets you inspect and
 download public Docker or OCI images directly in the browser. The UI uses
+
 **Chakra UI** and the site is deployed to **Cloudflare Pages**.
 
 ## Local development
@@ -20,10 +21,12 @@ pnpm install
 pnpm dev
 ```
 
-To create a production build locally run:
+To create a production build locally, run:
 
 ```bash
 pnpm build
+```
+
 Visit `http://localhost:4321` and enter an image such as
 `ghcr.io/getcronit/jaen-agent:zitadel`. After fetching, a table lists every file
 with the option to download a ZIP archive of the extracted filesystem.
@@ -36,6 +39,7 @@ Cloudflare Pages. It expects these configuration values:
 - `CF_API_TOKEN` — repository secret
 - `CF_ACCOUNT_ID` — repository variable
 - `CF_PAGES_PROJECT` — repository variable
+
 The site deploys to `oci-image-extractor.pages.dev` using the project name
 `oci-image-extractor`. See `.github/workflows/pages.yml` for the full
 pipeline.
