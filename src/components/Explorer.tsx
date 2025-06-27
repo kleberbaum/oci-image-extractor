@@ -34,7 +34,6 @@ export default function Explorer() {
 
     const zipBlob = await vfsToZip(vfs);
     setZipURL(URL.createObjectURL(zipBlob));
-
   }
 
   return (

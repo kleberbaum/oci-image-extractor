@@ -1,8 +1,20 @@
 // SPDX-License-Identifier: (EUPL-1.2)
-import { parse } from 'docker-url-parser';
+/** Parse a docker image reference of the form
+ *  `registry/namespace/repository[:tag]`.
+ *  This is minimal and only supports the format used in examples.
+ */
+function parseImageRef(ref: string) {
+  const segments = ref.split('/');
+  if (segments.length !== 3) {
+    throw new Error('invalid image reference: expected exactly three segments separated by "/"');
+  }
+  const [registry, namespace, repoTag] = segments;
+  const [repository, tag] = repoTag.split(':');
+  return { registry, namespace, repository, tag } as const;
+}
 
 export async function fetchManifest(imageRef: string) {
-  const { registry, namespace, repository, tag = 'latest' } = parse(imageRef);
+  const { registry, namespace, repository, tag = 'latest' } = parseImageRef(imageRef);
   const base = `https://${registry}/v2/${namespace}/${repository}`;
   const mRes = await fetch(`${base}/manifests/${tag}`, {
     headers: {
