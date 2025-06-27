@@ -1,15 +1,47 @@
 // SPDX-License-Identifier: (EUPL-1.2)
-/** Parse a docker image reference of the form
- *  `registry/namespace/repository[:tag]`.
- *  This is minimal and only supports the format used in examples.
+/**
+ * Parse a Docker image reference. Only a small subset of the reference
+ * grammar is supported but this avoids the need for the `docker-url-parser`
+ * package. The implementation accepts references such as:
+ *
+ * ``registry/namespace/repo[:tag]``
+ * ``registry/repo[:tag]``
+ * ``repo[:tag]``
+ *
+ * If no registry is given, `registry-1.docker.io` is assumed. When a single
+ * segment repository is provided, the `library` namespace is used by
+ * default. The returned object contains the resolved registry, namespace,
+ * repository name and optional tag.
  */
 function parseImageRef(ref: string) {
-  const segments = ref.split('/');
-  if (segments.length !== 3) {
-    throw new Error('invalid image reference: expected exactly three segments separated by "/"');
+  let registry = 'registry-1.docker.io';
+  let remainder = ref;
+
+  const firstSlash = ref.indexOf('/');
+  if (firstSlash !== -1) {
+    const candidate = ref.slice(0, firstSlash);
+    if (candidate.includes('.') || candidate.includes(':') || candidate === 'localhost') {
+      registry = candidate;
+      remainder = ref.slice(firstSlash + 1);
+    }
   }
-  const [registry, namespace, repoTag] = segments;
-  const [repository, tag] = repoTag.split(':');
+
+  let tag: string | undefined;
+  if (remainder.includes('@')) {
+    [remainder] = remainder.split('@');
+  }
+  if (remainder.includes(':')) {
+    [remainder, tag] = remainder.split(':');
+  }
+
+  const parts = remainder.split('/');
+  let namespace = 'library';
+  let repository = remainder;
+  if (parts.length > 1) {
+    namespace = parts.slice(0, -1).join('/');
+    repository = parts[parts.length - 1];
+  }
+
   return { registry, namespace, repository, tag } as const;
 }
 
