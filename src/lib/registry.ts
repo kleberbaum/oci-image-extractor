@@ -4,10 +4,11 @@
  *  This is minimal and only supports the format used in examples.
  */
 function parseImageRef(ref: string) {
-  const [registry, namespace, repoTag] = ref.split('/');
-  if (!registry || !namespace || !repoTag) {
-    throw new Error('invalid image reference');
+  const segments = ref.split('/');
+  if (segments.length !== 3) {
+    throw new Error('invalid image reference: expected exactly three segments separated by "/"');
   }
+  const [registry, namespace, repoTag] = segments;
   const [repository, tag] = repoTag.split(':');
   return { registry, namespace, repository, tag } as const;
 }
