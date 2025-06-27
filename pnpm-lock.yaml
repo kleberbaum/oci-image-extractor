@@ -1,0 +1,18 @@
+lockfileVersion: '6.0'
+settings:
+  packageManager: 'pnpm@9.0.0'
+specifiers:
+  libarchive-wasm: ^0.2.0
+  jszip: ^3.10.0
+  '@chakra-ui/react': ^2.8.1
+  '@emotion/react': ^11.11.1
+  '@emotion/styled': ^11.11.0
+  framer-motion: ^10.18.0
+  docker-url-parser: ^1.0.2
+  react: ^18.3.0
+  react-dom: ^18.3.0
+  astro: ^4.0.0
+  '@astrojs/cloudflare': ^3.0.0
+  '@astrojs/react': ^3.0.0
+  typescript: ^5.0.0
+
