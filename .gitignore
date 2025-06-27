@@ -27,5 +27,13 @@ __pycache__/
 # Fonts
 *.ttf
 
+# Node
+node_modules/
+dist/
+.astro/
+.vercel/
+pnpm-lock.yaml
+.DS_Store
+
 # SPDX-License-Identifier: (EUPL-1.2)
 # Copyright © 2019-2024 netsnek
