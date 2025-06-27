@@ -4,9 +4,54 @@
   </a>
 </p>
 
-<h3 align="center">Repository Template</h3>
+<h3 align="center">Docker Image Explorer</h3>
 
-This repository serves as an entry point for all my future projects.
+This repository hosts a static **Astro** site that lets you inspect and
+download public Docker or OCI images directly in the browser. The UI uses
+**Chakra UI** and the site is deployed to **Cloudflare Pages**.
 
-SPDX-License-Identifier: (EUPL-1.2)
+## Local development
+
+1. Ensure **Node.js 20+** and `pnpm` are installed.
+2. Install dependencies and start the dev server:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+To create a production build locally run:
+
+```bash
+pnpm install
+pnpm build
+```
+
+Visit `http://localhost:4321` and enter an image such as
+`ghcr.io/getcronit/jaen-agent:zitadel`. After fetching, a table lists every file
+with the option to download a ZIP archive of the extracted filesystem.
+
+## Continuous deployment
+
+A GitHub Actions workflow builds the site and uploads the `dist/` folder to
+Cloudflare Pages. The workflow expects these repository secrets:
+
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CF_PAGES_PROJECT` – the slug of the Pages project
+
+See `.github/workflows/pages.yml` for the full pipeline.
+
+## Repository files
+
+- `CODE_OF_CONDUCT.md` – our Code of Conduct
+- `CONTRIBUTING.md` – guidelines for contributors
+- `LICENSES/preferred/EUPL-1.2` – license text
+- `COPYING` – licensing notes
+- `docker-explorer/` – the Astro project containing all source files
+
+## License
+
+SPDX-License-Identifier: EUPL-1.2
+
 Copyright © 2019-2024 netsnek

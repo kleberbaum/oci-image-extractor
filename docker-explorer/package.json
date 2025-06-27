@@ -1,0 +1,28 @@
+{
+  "name": "docker-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "libarchive-wasm": "^0.2.0",
+    "jszip": "^3.10.0",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.18.0",
+    "docker-url-parser": "^1.0.2",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "astro": "^4.0.0",
+    "@astrojs/cloudflare": "^3.0.0",
+    "@astrojs/react": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+<!-- SPDX-License-Identifier: (EUPL-1.2) -->
+---
+import Explorer from '../components/Explorer.tsx';
+import { ChakraProvider, Box, Heading } from '@chakra-ui/react';
+---
+<html>
+  <head>
+    <title>Docker Image Explorer</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <ChakraProvider>
+      <Box maxW="5xl" mx="auto" p={8}>
+        <Heading as="h1" size="lg" mb={4}>
+          🗂️ Docker Image Explorer (client-only)
+        </Heading>
+        <Explorer client:react />
+      </Box>
+    </ChakraProvider>
+  </body>
+</html>
